@@ -4,6 +4,7 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 import socket
 import json
+from datetime import datetime, date
 
 AccessToken = '1356926758826704897-ocfGahmGZrXNTS9GynKHbc3bDD9WA9'
 AccessSecret = 'A2BgoiIi8ni85yFpNSoZRuccvXQ5E9CYo4Ni3mVdA8KLU'
@@ -24,12 +25,14 @@ class listener(StreamListener):
             print("new message")
             print(msg)
             print(str(msg['text'] + "@@#" + msg['user']['name'] + "@@#" +
-                      msg['user']['screen_name'] + "@@#" + "data_end"))
+                      msg['user']['screen_name'] + "@@#" + msg['id_str'] + "@@#" +
+                      str(datetime.today()) + "@@#data_end@@#"))
             # add at the end of each tweet "t_end"
 
             self.client_socket \
                 .send(str(msg['text'] + "@@#" + msg['user']['name'] + "@@#" +
-                          msg['user']['screen_name'] + "@@#" + "@@#data_end@@#") \
+                          msg['user']['screen_name'] + "@@#" + msg['id_str'] + "@@#" +
+                          str(datetime.today()) + "@@#data_end@@#") \
                       .encode('utf-8'))
             return True
 

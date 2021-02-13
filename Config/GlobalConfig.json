@@ -1,12 +1,9 @@
 {
-  "type": "service_account",
-  "project_id": "cellular-potion-280212",
-  "private_key_id": "f2f155f772b9cdf5ac53ec54ceb818fea7b50845",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCG5S4Et0u7c+KK\nkiLnf0TEvVzOchb936Dm7IWo7YLdJbnf2Cpw6nle2pgfwhU1dA+SQe50eP5KXCDH\nuUZtIqvOaQNhYZmNEq4JV8nHYdFVX2FwRKb3aAo9qzyo0eHTJNVmaxVsmJYjfcbu\nfzAvYGmWFPvpWsAf6JdK8Yl6lqsX3m1rlWgQjHMtlWG1ZkHzgOO3poR1L2iI9kPn\nOLEgTLJU5VfbififU2lh7hoju9F87nObigl6DrxEjOQdaTm9udaSYu0XdYEkkvB4\nTzojyxYvytJVJWw7gcc3NjaXZnXmdoCBchMFkIcHoNSKF7rdu+74iTo/ARfFObuY\nyom27xypAgMBAAECggEAJsaBFGT19YPJtmhsdRvt0hnWsBc2ibJ7J3YMs7LWP6iF\nBhW2mW+lBMGUIejhvNRIV5PxLfTLr+dMmuyklGF3fmVMTfVGtLkOYuwjudbh3AcH\nVMS/M/Xpn7F1xddS8SUw3Hhil61C1x/kC5Fu8edmYnhUs07dVC7BMo88pArkUn84\nIfJixFpTARRlyJ0zqh3klR1XPOI+d7VxjLoF9jarTPSB4aW5XM8bLBS4vF+pF9K4\nOBisWGxd14LXm4u1UZbKDZDrmz3mA3j2HP7Cb1wV8AyKXrdy4pwjm5f3pz+audw3\nmBQgIGYet6au9Z7kGNIPBHqXlQKwbKluJHbtWdsfYwKBgQC5+1MhBg77/8+NKuOl\n0KTBXvtb5C8eGqyS2w2nnbbDw7N6p0zL7r3mLEsABB1shQZImJ/dnlt7MwhirSFu\n9jihsD0LM6tarcoiW0P9HJTrig1cYYfbTQqpauugxZOkTk6Cd5bhmq9sk/Ct0/1w\n4H9S5/bdeG5boHzIWSlqWcSFXwKBgQC5rjR5ir5gUrWj/Jk0d3jju+sVguVTNAn7\nYMs3mfbPHr4PJ+RJm20UAbGhojZXqHJXpAsSUOW2yxNVTWt8aAoHBZbFsmLVvva3\nDZ13QZjm0KzpA73VESGJFpwQC3As1Sppbgvd4mgQFGUtmo15j+VgQhiWvS3q5+vv\n/tCV1KZS9wKBgAhNrkJ1MMoTe8LDvXIzxIdVpEdQAsKHUlkkKpHnOre2zxaUzZr1\nR8k1BQw1ItMrhUJMfia44UC44JD3RdzcZV7irXcIkYf05mduR7TPR97URRBw0k36\nPJWfznFZIORfEqZEjJn5/AcO+9nm8xPNEiIzdRQiQlsY6TlQscarx1hlAoGBAKqX\nPUjJSp0OgCk4Yr1MYnnAZXwu9Wga8GzOggYEYzfpQ66C9P8XWADAiaU5dfnVHbAd\nW7qpLlNhgdKmPXFf2I6Y+OuLN7ivKNYHITu2vbaZ07KFKHw/r/LWHe2zxIy8D6or\nW6WwY/EZ+9cJHp+nr5JfR13+Uth12VN2ZcayR1kDAoGBAKAUvzAqRpfDi8j5vmF+\npHOCGmPJCWZzh6soNfdf4P5Zp2O9o17Biy03zcIyZz1p3K1xO/DuQyuCu5wER2uk\nNHQ4IAXrI3fV/VqwXyVgP/MgA0MNL7P+901jyZqAn3w/Neqg02Y1KCmN6kHmFI29\nNl286W6YnXNakqs7t2vJPEh2\n-----END PRIVATE KEY-----\n",
-  "client_email": "dataprocessing@cellular-potion-280212.iam.gserviceaccount.com",
-  "client_id": "115851883971247066371",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dataprocessing%40cellular-potion-280212.iam.gserviceaccount.com"
+  "AccessToken":"1356926758826704897-ocfGahmGZrXNTS9GynKHbc3bDD9WA9",
+  "AccessSecret":"A2BgoiIi8ni85yFpNSoZRuccvXQ5E9CYo4Ni3mVdA8KLU",
+  "consumer_key":"YJLhbqwl4tS8im6moFQuzczxU",
+  "consumer_secret":"A7CrsTFwTFrfoz8foadTMQt1Enc8nNtpgweiFY9ISQV4oQ3fhP",
+  "cassandraport": 9042,
+  "twitterstreamingport": 9726,
+  "host": "127.0.0.1"
 }
