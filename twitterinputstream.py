@@ -47,7 +47,7 @@ def senddata(c_socket, keyword):
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(AccessToken, AccessSecret)
     # start sending data from the Streaming API
-    twitter_stream = Stream(auth, listener(c_socket))
+    twitter_stream = Stream(auth, Listener(c_socket))
     twitter_stream.filter(track=keyword, languages=["en"])
 
 
