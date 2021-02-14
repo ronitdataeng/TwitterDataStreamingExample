@@ -11,7 +11,7 @@ def savetheresult(rdd):
         rdd_mapped = rdd.map(lambda w: Row(value=w))
         spdf_streamdata = rdd_mapped.toDF()
         spdf_streamdata = spdf_streamdata.filter("Value is not null")
-        spdf_datatowrite = spdf_streamdata.withColumn('Text', sf.split(df['value'], '@@#').getItem(0)) \
+        spdf_datatowrite = spdf_streamdata.withColumn('Text', sf.split(spdf_streamdata['value'], '@@#').getItem(0)) \
             .withColumn('Name', sf.split(spdf_streamdata['value'], '@@#').getItem(1)) \
             .withColumn('UserName', sf.split(spdf_streamdata['value'], '@@#').getItem(2)) \
             .withColumn('UserID', sf.split(spdf_streamdata['value'], '@@#').getItem(3)) \
