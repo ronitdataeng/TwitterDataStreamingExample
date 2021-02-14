@@ -2,24 +2,23 @@ from pyspark import *
 from pyspark.sql import functions as sf, SparkSession
 from pyspark.sql.types import Row
 from pyspark.streaming import StreamingContext
-
-from cassandraData import cassandra_getkeyspace
+from Config.ReadGlobalConfig import *
+from cassandraData import cassandra_writedate
 
 
 def savetheresult(rdd):
     if not rdd.isEmpty():
         rdd_mapped = rdd.map(lambda w: Row(value=w))
-        df = rdd_mapped.toDF()
-        df = df.filter("Value is not null")
-        df1 = df.withColumn('Text', sf.split(df['value'], '@@#').getItem(0)) \
-            .withColumn('Name', sf.split(df['value'], '@@#').getItem(1)) \
-            .withColumn('UserName', sf.split(df['value'], '@@#').getItem(2)) \
-            .withColumn('UserID', sf.split(df['value'], '@@#').getItem(3)) \
-            .withColumn('TimeStamp', sf.split(df['value'], '@@#').getItem(4)) \
+        spdf_streamdata = rdd_mapped.toDF()
+        spdf_streamdata = spdf_streamdata.filter("Value is not null")
+        spdf_datatowrite = spdf_streamdata.withColumn('Text', sf.split(df['value'], '@@#').getItem(0)) \
+            .withColumn('Name', sf.split(spdf_streamdata['value'], '@@#').getItem(1)) \
+            .withColumn('UserName', sf.split(spdf_streamdata['value'], '@@#').getItem(2)) \
+            .withColumn('UserID', sf.split(spdf_streamdata['value'], '@@#').getItem(3)) \
+            .withColumn('TimeStamp', sf.split(spdf_streamdata['value'], '@@#').getItem(4)) \
             .drop('value') \
             .filter((sf.col('UserID').isNotNull()) & (sf.col('TimeStamp').isNotNull()))
-        cassandra_getkeyspace(df1.toPandas())
-        df1.show()
+        cassandra_writedate(spdf_datatowrite.toPandas())
 
 
 if __name__ == "__main__":
@@ -29,7 +28,7 @@ if __name__ == "__main__":
     # create spark context with the above configuration
     ssc = StreamingContext(sc, 10)
     # read data from port
-    dataStream = ssc.socketTextStream("127.0.0.1", 9726).window(10)
+    dataStream = ssc.socketTextStream(host, twitterstreamingport).window(10)
     # split each tweet into words
     words = dataStream.flatMap(lambda line: line.split("@@#data_end@@#"))
 

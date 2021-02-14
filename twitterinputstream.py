@@ -5,14 +5,10 @@ from tweepy import OAuthHandler
 import socket
 import json
 from datetime import datetime, date
-
-AccessToken = '1356926758826704897-ocfGahmGZrXNTS9GynKHbc3bDD9WA9'
-AccessSecret = 'A2BgoiIi8ni85yFpNSoZRuccvXQ5E9CYo4Ni3mVdA8KLU'
-consumer_key = 'YJLhbqwl4tS8im6moFQuzczxU'
-consumer_secret = 'A7CrsTFwTFrfoz8foadTMQt1Enc8nNtpgweiFY9ISQV4oQ3fhP'
+from Config.ReadGlobalConfig import *
 
 
-class listener(StreamListener):
+class Listener(StreamListener):
 
     # tweet object listens for the tweets
     def __init__(self, csocket):
@@ -58,9 +54,7 @@ def senddata(c_socket, keyword):
 if __name__ == "__main__":
     # server (local machine) creates listening socket
     s = socket.socket()
-    host = "127.0.0.1"
-    port = 9726
-    s.bind((host, port))
+    s.bind((host, twitterstreamingport))
     print('socket is ready')
     # server (local machine) listens for connections
     s.listen(4)

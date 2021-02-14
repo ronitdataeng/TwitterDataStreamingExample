@@ -1,11 +1,11 @@
 from cassandra.cluster import Cluster
+from Config.ReadGlobalConfig import *
 
-
-def cassandra_getkeyspace(df):
+def cassandra_writedate(df):
     """
 
     """
-    cluster = Cluster(['127.0.0.1'], port=9042)
+    cluster = Cluster([host], port=cassandraport)
     session = cluster.connect()
     session.execute("""
             CREATE KEYSPACE IF NOT EXISTS twitterdata
@@ -35,10 +35,4 @@ def cassandra_getkeyspace(df):
                            , row['TimeStamp']))
     return session.set_keyspace('twitterdata')
 
-
-cluster = Cluster(['127.0.0.1'], port=9042)
-session = cluster.connect()
-session.set_keyspace('twitterdata')
-df = session.execute("""SELECT * FROM twitterusertable """)
-print(df.current_rows)
 
