@@ -35,4 +35,3 @@ def cassandra_writedate(df):
                            , row['TimeStamp']))
     return session.set_keyspace('twitterdata')
 
-

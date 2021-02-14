@@ -23,8 +23,8 @@ class Listener(StreamListener):
             print(str(msg['text'] + "@@#" + msg['user']['name'] + "@@#" +
                       msg['user']['screen_name'] + "@@#" + msg['id_str'] + "@@#" +
                       str(datetime.today()) + "@@#data_end@@#"))
-            # add at the end of each tweet "t_end"
 
+            # add at the end of each tweet "@@#data_end@@#" also adding '@@#' after each data object in a tweet
             self.client_socket \
                 .send(str(msg['text'] + "@@#" + msg['user']['name'] + "@@#" +
                           msg['user']['screen_name'] + "@@#" + msg['id_str'] + "@@#" +
@@ -62,5 +62,5 @@ if __name__ == "__main__":
     # return the socket and the address on the other side of the connection (client side)
     c_socket, addr = s.accept()
     print("Received request from: " + str(addr))
-    # select here the keyword for the tweet data
+    # select here the keyword 'covid' for the tweet data
     senddata(c_socket, keyword=['covid'])
