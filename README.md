@@ -1,5 +1,5 @@
 # TwitterDataStreamingExample
-Twitter streaming data example, receiving and saving the data in Cassandra using spark streaming.  
+Twitter streaming data example, receiving and saving the data in Cassandra using Spark Streaming.  
 
 First Run the below comment to spin up the Cassandra DB in docker:
 docker run --name cassandratest -p 127.0.0.1:9042:9042 -e CASSANDRA_CLUSTER_NAME=MyCluster -e 
