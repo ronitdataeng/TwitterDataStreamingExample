@@ -3,12 +3,14 @@ from tweepy import Stream
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 import socket
-import json
-from datetime import datetime, date
+from datetime import datetime
 from Config.ReadGlobalConfig import *
 
 
 class Listener(StreamListener):
+    """
+
+    """
 
     # tweet object listens for the tweets
     def __init__(self, csocket):
@@ -16,6 +18,9 @@ class Listener(StreamListener):
         self.client_socket = csocket
 
     def on_data(self, data):
+        """
+
+        """
         try:
             msg = json.loads(data)
             print("new message")
@@ -41,14 +46,18 @@ class Listener(StreamListener):
         return True
 
 
-def senddata(c_socket, keyword):
+def senddata(c_socket):
+    """
+
+    """
     print('start sending data from Twitter to socket')
     # authentication based on the credentials
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(AccessToken, AccessSecret)
     # start sending data from the Streaming API
     twitter_stream = Stream(auth, Listener(c_socket))
-    twitter_stream.filter(track=keyword, languages=["en"])
+    # twitter_stream.filter(languages=["en"])
+    twitter_stream.sample(languages=["en"])
 
 
 if __name__ == "__main__":
@@ -63,4 +72,4 @@ if __name__ == "__main__":
     c_socket, addr = s.accept()
     print("Received request from: " + str(addr))
     # select here the keyword 'covid' for the tweet data
-    senddata(c_socket, keyword=['covid'])
+    senddata(c_socket)

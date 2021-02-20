@@ -1,12 +1,16 @@
 from pyspark import *
 from pyspark.sql import functions as sf, SparkSession
-from pyspark.sql.types import Row
+from pyspark.sql.types import Row,IntegerType
 from pyspark.streaming import StreamingContext
 from Config.ReadGlobalConfig import *
 from cassandraData import cassandra_writedate
 
 
 def savetheresult(rdd):
+    """
+
+    """
+
     if not rdd.isEmpty():
         # mapping the rdd to create the whole stream data as a row
         rdd_mapped = rdd.map(lambda w: Row(value=w))
@@ -19,9 +23,11 @@ def savetheresult(rdd):
             .withColumn('UserName', sf.split(spdf_streamdata['value'], '@@#').getItem(2)) \
             .withColumn('UserID', sf.split(spdf_streamdata['value'], '@@#').getItem(3)) \
             .withColumn('TimeStamp', sf.split(spdf_streamdata['value'], '@@#').getItem(4)) \
+            .withColumn('Date', sf.substring(sf.col('TimeStamp'), 0, 10)) \
+            .withColumn('Hour', sf.date_format(sf.col('TimeStamp'), 'HH').cast(IntegerType())) \
             .drop('value') \
             .filter((sf.col('UserID').isNotNull()) & (sf.col('TimeStamp').isNotNull()))
-        # calling the funtion to write into the cassandra table
+        # calling the function to write into the cassandra table
         cassandra_writedate(spdf_datatowrite.toPandas())
 
 
