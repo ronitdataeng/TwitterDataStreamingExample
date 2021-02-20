@@ -25,7 +25,7 @@ def cassandra_writedate(df):
     , TimeStamp text
     , Date text
     , Hour int
-    , PRIMARY KEY (UserID,TimeStamp))""")
+    , PRIMARY KEY (UserID,TimeStamp,Date))""")
 
     query_insert = "INSERT INTO twitterusertable " \
                    "(Text, Name, UserName, UserID,TimeStamp,Date,Hour) " \
